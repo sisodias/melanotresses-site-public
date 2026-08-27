@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Light, minimal, airy — a clinic, not a salon. The palette and font stack are
+ * defined alongside the utility theme in tailwind.config.js.
+ */
+:root {
+  --paper: #FFFFFF;
+  --sand: #EDE1D4;
+  --cocoa: #4D2E10;
+  --bark: #522700;
+  --ink: #3A2109;
+  --black: #000000;
+}
+
+/* The heading stack falls back to Cormorant Garamond when The Seasons is absent. */
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--cocoa);
+  font-family: Montserrat, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Elegant serif headings — light weight, open tracking, never chunky. */
+h1, h2, h3, h4 {
+  font-family: "The Seasons", "Cormorant Garamond", Cormorant, Georgia, serif;
+  color: var(--cocoa);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+}
+
+/*
+ * CONTRAST — a fixed dark-brown-on-light scheme, so every pairing clears AA:
+ *   cocoa  #4D2E10 on white ....... 11.9:1  AAA
+ *   cocoa  #4D2E10 on sand ......... 9.0:1  AAA
+ *   bark   #522700 on white ....... 13.4:1  AAA
+ *   bark   #522700 on sand ........ 10.1:1  AAA
+ *   white  on bark ................ 13.4:1  AAA   (primary buttons)
+ *   white  on ink #3A2109 ......... 15.0:1  AAA   (footer)
+ *   sand   #EDE1D4 on bark ........ 10.1:1  AAA   (eyebrows on dark)
+ */
+
+::selection { background: var(--bark); color: #FFFFFF; }
+
+:focus-visible {
+  outline: 2px solid var(--bark);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-6 sm:px-10; }
+  .container-narrow { @apply mx-auto w-full max-w-3xl px-6 sm:px-10; }
+  /* Airy vertical rhythm — deliberately generous. */
+  .section { @apply py-20 sm:py-28; }
+
+  /*
+   * Buttons are quiet and editorial: no heavy fill weight, letter-spaced small
+   * caps, generous padding. Primary is solid bark; the rest are outline/text.
+   */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5
+           font-body text-[13px] font-medium uppercase tracking-[0.14em]
+           transition-all duration-300 min-h-[48px];
+  }
+  .btn-copper { @apply btn bg-bark text-white hover:bg-cocoa; }
+  .btn-dark   { @apply btn bg-cocoa text-white hover:bg-bark; }
+  .btn-ghost  { @apply btn border border-cocoa/40 text-cocoa hover:border-cocoa hover:bg-cocoa/[0.04]; }
+  .btn-on-dark{ @apply btn border border-white/40 text-white hover:border-white hover:bg-white/10; }
+
+  /* Small letter-spaced label above headings. */
+  .eyebrow {
+    @apply font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-bark;
+  }
+  .eyebrow-on-tan {
+    @apply font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-bark;
+  }
+  .eyebrow-on-dark {
+    @apply font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-sand;
+  }
+
+  /* Cards are quiet: a soft sand panel or a hairline, minimal shadow. */
+  .card {
+    @apply rounded-2xl bg-white p-8 ring-1 ring-cocoa/10 shadow-soft;
+  }
+
+  /* Thin editorial rule used above section headings. */
+  .rule::before {
+    content: '';
+    @apply mb-6 block h-px w-12 bg-bark/60;
+  }
+
+  .link-copper {
+    @apply font-medium text-bark underline decoration-bark/30 underline-offset-4
+           hover:decoration-bark;
+  }
+}
+
+/*
+ * Scroll-reveal elements start faded and lifted; JS adds .is-visible when they
+ * enter the viewport. The reduced-motion media query disables the transition.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+ /* Marquee columns used by the editorial review treatment. */
+.marquee-mask { -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent); mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent); }
+.marquee-track { animation: mt-marquee linear infinite; }
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
+@keyframes mt-marquee { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
