@@ -94,7 +94,7 @@ function HeroFounder() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden border-b border-cocoa/10 bg-[#F7F3EE]">
+    <section className="relative overflow-hidden border-b border-cocoa/10 bg-[#D9BF9F]">
       {HERO_SLIDES.map((item, index) => (
         <img
           key={item.src}
@@ -108,7 +108,7 @@ function HeroFounder() {
           decoding="async"
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EE]/95 via-[#F7F3EE]/70 to-transparent lg:via-[#F7F3EE]/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#E8D7BC]/95 via-[#E8D7BC]/70 to-transparent lg:via-[#E8D7BC]/40" />
       <div className="container-x relative flex min-h-[62vh] items-center py-16 sm:py-20 lg:min-h-[86vh]">
         <div className="max-w-xl text-left lg:max-w-[38rem]">
           <Reveal>
