@@ -41,7 +41,7 @@ const SALON_PHOTOS = [
   { src: '/images/salon/salon-mirror-station.jpg', alt: 'A styling station in the salon' },
   { src: '/images/salon/salon-lounge.jpg', alt: 'The salon lounge' },
   { src: '/images/salon/salon-consultation-desk.jpg', alt: 'The consultation desk' },
-  { src: '/images/salon/salon-wash-stations.jpg', alt: 'The wash stations' },
+  { src: '/images/salon/salon-styling-floor.jpg', alt: 'The styling floor' },
 ]
 
 export default function TheMethod() {
