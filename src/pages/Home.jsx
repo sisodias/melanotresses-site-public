@@ -27,11 +27,21 @@ const LOCAL_BUSINESS = {
   ],
 }
 
+/*
+ * Hero slideshow, per Priscilla (WhatsApp 10 Sep): restore the textured-hair photos
+ * from the first slideshow, keep her chosen portrait first (the cream arc frame she
+ * picked on 25 Aug), and add a male version.
+ */
 const HERO_SLIDES = [
   {
-    src: '/images/generated/hero-male-sand-01.png',
-    alt: 'Editorial campaign portrait for MelanoTresses',
+    src: '/images/generated/hero-priscilla-cream-02.png',
+    alt: 'Priscilla, founder of MelanoTresses',
     pos: 'object-[78%_center] lg:object-center',
+  },
+  {
+    src: '/images/generated/hero-07-natural-afro-campaign.jpg',
+    alt: 'A woman with natural afro hair in soft studio light',
+    pos: 'object-[65%_center] lg:object-[right_center]',
   },
   {
     src: '/images/generated/hero-male-cream-02.png',
@@ -39,14 +49,14 @@ const HERO_SLIDES = [
     pos: 'object-[78%_center] lg:object-center',
   },
   {
-    src: '/images/generated/hero-male-cocoa-03.png',
-    alt: 'Cocoa-toned editorial campaign portrait for MelanoTresses',
-    pos: 'object-[78%_center] lg:object-center',
+    src: '/images/generated/hero-01-twists-bun-editorial.jpg',
+    alt: 'Twisted low bun, editorial finish',
+    pos: 'object-[65%_center] lg:object-[right_center]',
   },
   {
-    src: '/images/generated/hero-male-studio-04.png',
-    alt: 'Editorial consultation-studio campaign portrait for MelanoTresses',
-    pos: 'object-[78%_center] lg:object-center',
+    src: '/images/generated/hero-03-natural-afro-texture.jpg',
+    alt: 'Natural afro texture in the studio',
+    pos: 'object-[65%_center] lg:object-[right_center]',
   },
 ]
 
@@ -119,16 +129,19 @@ function HeroFounder() {
 function PendingReviewNotice() {
   return (
     <div className="mx-auto max-w-2xl rounded-2xl bg-paper p-8 text-center ring-1 ring-cocoa/[0.08] sm:p-10">
-      <p className="eyebrow mb-3">Google reviews</p>
-      <h3 className="font-head text-2xl text-cocoa">Read the studio&apos;s current reviews</h3>
+      <p className="eyebrow mb-3">Client stories</p>
+      <h3 className="font-head text-2xl text-cocoa">In our clients&apos; own words</h3>
       <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-cocoa/75">
-        The studio&apos;s current reviews are kept on Google. On-site client stories will only be added
-        after the wording and publication permission have been confirmed.
+        Scalp conditions, postpartum hair loss and heat damage: read how clients got their hair
+        and scalp back on track.
       </p>
-      <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="btn-ghost mt-6">
-        <Star size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
-        Read reviews on Google
-      </a>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <Link to="/results" className="btn-copper">Read client testimonials</Link>
+        <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="btn-ghost">
+          <Star size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+          Reviews on Google
+        </a>
+      </div>
     </div>
   )
 }
@@ -225,7 +238,7 @@ export default function Home() {
             <SectionHead
               eyebrow="Reviews"
               title="Trusted by clients across the North East"
-              intro="Read the studio&apos;s current public reviews while future on-site stories are confirmed with their authors."
+              intro="Real stories from clients of the MelanoTresses studio."
             />
             <span id="reviews-heading" className="sr-only">Client reviews</span>
             <PendingReviewNotice />

@@ -12,8 +12,8 @@ import { STORY_BEATS, QUALIFICATION, FOUNDER_QUOTE } from '../data'
 /*
  * ABOUT — deliberately minimal. Hero (story-led introduction),
  * the founder story told one beat at a time as you scroll, credentials at the
- * end, and a booking band. The narrative comes from STORY_BEATS. The public
- * handoff uses an illustrative campaign image.
+ * end, and a booking band. The narrative comes from STORY_BEATS. The photo is
+ * Priscilla's real professional headshot.
  */
 
 export default function About() {
@@ -31,9 +31,9 @@ export default function About() {
       >
         <div className="mt-12 grid items-center gap-8 sm:gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]">
           <PhotoBlock
-            src="/images/generated/hero-male-sand-01.png"
-            alt="Editorial campaign image for MelanoTresses"
-            label="Editorial campaign image"
+            src="/images/client/priscilla-headshot.jpg"
+            alt="Priscilla, founder of MelanoTresses, in the studio"
+            label="Photo: Priscilla"
             ratio="aspect-[4/5]"
             position="object-top"
           />

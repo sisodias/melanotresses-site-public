@@ -10,12 +10,12 @@ import { Reveal } from './ui'
  * quiet onward CTA.
  */
 const TILES = [
-  { label: 'A calm consultation setting', src: '/images/generated/consultation-desk.jpg', tall: true },
-  { label: 'Care before styling', src: '/images/generated/booking-care-still-life.png' },
-  { label: 'A close look at the scalp', src: '/images/generated/clinic-room-trichoscopy.jpg' },
-  { label: 'Texture-conscious consultation', src: '/images/generated/scalp-assessment-hands.jpg', tall: true },
-  { label: 'Consultation and education', src: '/images/generated/booking-consultation-still-life.png' },
-  { label: 'A thoughtful studio approach', src: '/images/generated/consultation-desk.png' },
+  { label: 'Flat twists, freshly installed', src: '/images/twists-profile.jpg', tall: true },
+  { label: 'Blow-out on natural hair', src: '/images/afro-profile.jpg' },
+  { label: 'Occasion updo, finishing detail', src: '/images/updo-pearl.jpg' },
+  { label: 'Low bun on flat twists', src: '/images/twists-low-bun.jpg', tall: true },
+  { label: 'Fluffy blow-out, full shape', src: '/images/blowout-full.jpg' },
+  { label: 'Clean partings, healthy scalp', src: '/images/twists-bun-back.jpg' },
 ]
 
 export function ResultsGallery() {

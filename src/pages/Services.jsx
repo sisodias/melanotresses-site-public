@@ -116,12 +116,12 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Illustrative editorial imagery for the public handoff. */}
+          {/* Real styling work from the studio. */}
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3">
             {[
-              { src: '/images/generated/booking-care-still-life.png', label: 'Care before styling' },
-              { src: '/images/generated/consultation-desk.jpg', label: 'A calm consultation setting' },
-              { src: '/images/generated/booking-consultation-still-life.png', label: 'Consultation and education' },
+              { src: '/images/twists-side.jpg', label: 'Flat twists, side profile' },
+              { src: '/images/twists-low-bun.jpg', label: 'Flat twists into a low bun' },
+              { src: '/images/updo-pearl.jpg', label: 'Occasion updo with pearl pin' },
             ].map((g) => (
               <figure key={g.src} className="group relative aspect-square overflow-hidden rounded-2xl">
                 <img

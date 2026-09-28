@@ -37,6 +37,13 @@ const SCHEMA = {
   areaServed: AREA_SERVED,
 }
 
+const SALON_PHOTOS = [
+  { src: '/images/salon/salon-mirror-station.jpg', alt: 'A styling station in the salon' },
+  { src: '/images/salon/salon-lounge.jpg', alt: 'The salon lounge' },
+  { src: '/images/salon/salon-consultation-desk.jpg', alt: 'The consultation desk' },
+  { src: '/images/salon/salon-wash-stations.jpg', alt: 'The wash stations' },
+]
+
 export default function TheMethod() {
   return (
     <>
@@ -87,16 +94,27 @@ export default function TheMethod() {
             </div>
           </div>
 
-          {/* Generated clinic-room illustration (AI): treatment chair +
-              trichoscopy station — the literal "clinic, not a salon". */}
+          {/* Priscilla's own salon photos (WhatsApp 9 Sep), for the Method page per her 10 Sep message. */}
           <PhotoBlock
-            src="/images/generated/clinic-room-trichoscopy.jpg"
-            alt="A calm clinical treatment room with a trichoscopy station"
-            label="The clinic room"
+            src="/images/salon/salon-wide.jpg"
+            alt="The MelanoTresses salon in Newcastle"
+            label="The salon"
             ratio="aspect-[4/5]"
-            position="object-[35%_center]"
+            position="object-center"
             className="mx-auto w-full max-w-md"
           />
+        </div>
+
+        <div className="container-x mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+          {SALON_PHOTOS.map((photo) => (
+            <PhotoBlock
+              key={photo.src}
+              src={photo.src}
+              alt={photo.alt}
+              label={photo.alt}
+              ratio="aspect-[3/4]"
+            />
+          ))}
         </div>
       </section>
 
