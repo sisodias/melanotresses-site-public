@@ -40,8 +40,6 @@ export const ACUITY_TYPE_IDS = {
   'MelanoTouch': 59342244,          // children's MelanoTouch £70
   'Natural Hairstyle (child)': 59342298,
   'Super Defined (Wash and Go) (child)': 83130241,
-// No active public Acuity appointment type currently exposes this service for
-// direct preselection.
 }
 
 /* -------------------------------------------------------------- consultation */
@@ -256,7 +254,6 @@ export const SERVICE_GROUPS = [
       { name: 'Polish Me Up', duration: '2 hours 45 minutes', price: '£40', acuityId: ACUITY_TYPE_IDS['Polish Me Up'] },
       { name: 'Monthly TLC', duration: '3 hours 30 minutes', price: '£60', acuityId: ACUITY_TYPE_IDS['Monthly TLC'] },
       { name: 'The MelanoTouch', duration: '5 hours', price: '£70', acuityId: ACUITY_TYPE_IDS.MelanoTouch },
-      { name: 'MelanoSilk', detail: 'Children’s availability to confirm' },
       { name: 'Natural Hairstyle', duration: '2 hours', price: '£30', acuityId: ACUITY_TYPE_IDS['Natural Hairstyle (child)'] },
       { name: 'Super Defined (Wash and Go)', duration: '2 hours 45 minutes', price: '£55', acuityId: ACUITY_TYPE_IDS['Super Defined (Wash and Go) (child)'] },
     ],

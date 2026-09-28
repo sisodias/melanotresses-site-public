@@ -55,7 +55,6 @@ const GROUPS = [
       { name: 'Polish Me Up', id: ACUITY_TYPE_IDS['Polish Me Up'], bookingId: bookingIdFor('Children’s Services (6–18 years)', 'Polish Me Up'), note: '£40 · 2.75 hours' },
       { name: 'Monthly TLC', id: ACUITY_TYPE_IDS['Monthly TLC'], bookingId: bookingIdFor('Children’s Services (6–18 years)', 'Monthly TLC'), note: '£60 · 3.5 hours' },
       { name: 'The MelanoTouch', id: ACUITY_TYPE_IDS.MelanoTouch, bookingId: bookingIdFor('Children’s Services (6–18 years)', 'MelanoTouch'), note: '£70 · 5 hours' },
-      { name: 'MelanoSilk', href: '/services#children', note: 'Children’s availability to confirm' },
       { name: 'Natural Hairstyle', id: ACUITY_TYPE_IDS['Natural Hairstyle (child)'], bookingId: bookingIdFor('Children’s Services (6–18 years)', 'Natural Hairstyle'), note: '£30 · 2 hours' },
       { name: 'Super Defined (Wash and Go)', id: ACUITY_TYPE_IDS['Super Defined (Wash and Go) (child)'], bookingId: bookingIdFor('Children’s Services (6–18 years)', 'Super Defined (Wash and Go)'), note: '£55 · 2.75 hours' },
     ],
