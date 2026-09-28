@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Microscope, Star } from 'lucide-react'
-import { ADDRESS, AREA_SERVED, GOOGLE_REVIEWS_URL } from '../data'
+import { ADDRESS, AREA_SERVED, FOUNDER_QUOTE, GOOGLE_REVIEWS_URL, TESTIMONIALS } from '../data'
 import { Seo, JsonLd, Reveal, PhotoBlock, SectionHead } from '../components/ui'
 import { PillarCards } from '../components/Pillars'
 import { ResultsGallery } from '../components/ResultsTeaser'
@@ -27,11 +27,23 @@ const LOCAL_BUSINESS = {
   ],
 }
 
+/*
+ * Hero slideshow, per Priscilla (WhatsApp 10 Sep): restore the textured-hair photos
+ * from the first slideshow, keep her chosen portrait first (the cream arc frame she
+ * picked on 25 Aug), and add a male version.
+ */
 const HERO_SLIDES = [
   {
-    src: '/images/generated/hero-male-sand-01.png',
-    alt: 'Editorial campaign portrait for MelanoTresses',
+    src: '/images/generated/hero-priscilla-cream-02.png',
+    alt: 'Priscilla, founder of MelanoTresses',
     pos: 'object-[78%_center] lg:object-center',
+  },
+  {
+    src: '/images/generated/hero-07-natural-afro-campaign.jpg',
+    alt: 'A woman with natural afro hair in soft studio light',
+    pos: 'object-[65%_center] lg:object-[right_center]',
+    // Not made with space for the copy: on desktop it sits right of the headline.
+    frame: 'lg:left-[34%] lg:w-[66%] lg:[mask-image:linear-gradient(to_right,transparent,black_24%)]',
   },
   {
     src: '/images/generated/hero-male-cream-02.png',
@@ -39,14 +51,15 @@ const HERO_SLIDES = [
     pos: 'object-[78%_center] lg:object-center',
   },
   {
-    src: '/images/generated/hero-male-cocoa-03.png',
-    alt: 'Cocoa-toned editorial campaign portrait for MelanoTresses',
-    pos: 'object-[78%_center] lg:object-center',
+    src: '/images/generated/hero-01-twists-bun-editorial.jpg',
+    alt: 'Twisted low bun, editorial finish',
+    pos: 'object-[65%_center] lg:object-[right_center]',
   },
   {
-    src: '/images/generated/hero-male-studio-04.png',
-    alt: 'Editorial consultation-studio campaign portrait for MelanoTresses',
-    pos: 'object-[78%_center] lg:object-center',
+    src: '/images/generated/hero-03-natural-afro-texture.jpg',
+    alt: 'Natural afro texture in the studio',
+    pos: 'object-[65%_center] lg:object-[right_center]',
+    frame: 'lg:left-[34%] lg:w-[66%] lg:[mask-image:linear-gradient(to_right,transparent,black_24%)]',
   },
 ]
 
@@ -88,7 +101,7 @@ function HeroFounder() {
           src={item.src}
           alt={index === slide ? item.alt : ''}
           aria-hidden={index !== slide}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${item.pos} ${
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${item.pos} ${item.frame || ''} ${
             index === slide ? 'opacity-100' : 'opacity-0'
           }`}
           loading={index === 0 ? 'eager' : 'lazy'}
@@ -116,19 +129,52 @@ function HeroFounder() {
   )
 }
 
-function PendingReviewNotice() {
+function ClientStories() {
+  const picks = TESTIMONIALS.filter((t) => t.excerpt)
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl bg-paper p-8 text-center ring-1 ring-cocoa/[0.08] sm:p-10">
-      <p className="eyebrow mb-3">Google reviews</p>
-      <h3 className="font-head text-2xl text-cocoa">Read the studio&apos;s current reviews</h3>
-      <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-cocoa/75">
-        The studio&apos;s current reviews are kept on Google. On-site client stories will only be added
-        after the wording and publication permission have been confirmed.
-      </p>
-      <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="btn-ghost mt-6">
-        <Star size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
-        Read reviews on Google
-      </a>
+    <div className="mx-auto max-w-4xl">
+      <div className="grid gap-6 md:grid-cols-2">
+        {picks.map((t) => (
+          <figure key={t.name} className="flex flex-col rounded-2xl bg-paper p-7 ring-1 ring-cocoa/[0.08]">
+            <blockquote className="flex-1 font-head text-xl italic leading-snug text-cocoa">“{t.excerpt}”</blockquote>
+            <figcaption className="mt-5">
+              <p className="font-body text-sm font-semibold text-cocoa">{t.name}</p>
+              <p className="mt-1 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-bark">{t.condition}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <Link to="/results" className="btn-copper">Read client testimonials</Link>
+        <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="btn-ghost">
+          <Star size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+          Reviews on Google
+        </a>
+      </div>
+    </div>
+  )
+}
+
+function MeetPriscilla() {
+  return (
+    <div className="container-x grid items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)]">
+      <PhotoBlock
+        src="/images/client/priscilla-headshot-glasses.jpg"
+        alt="Priscilla, founder of MelanoTresses"
+        label="Photo: Priscilla"
+        ratio="aspect-[4/5]"
+        position="object-top"
+        className="mx-auto w-full max-w-sm"
+      />
+      <div>
+        <p className="eyebrow mb-4">Meet the founder</p>
+        <h2 id="founder-heading" className="text-[2rem] leading-tight sm:text-[2.6rem]">Priscilla</h2>
+        <p className="mt-5 font-head text-2xl italic leading-snug text-cocoa/80">“{FOUNDER_QUOTE}”</p>
+        <p className="mt-5 leading-relaxed text-cocoa/85">
+          Trichology-led textured hair care in Newcastle upon Tyne, since 2018.
+        </p>
+        <Link to="/about" className="btn-ghost mt-7">Her story</Link>
+      </div>
     </div>
   )
 }
@@ -215,9 +261,13 @@ export default function Home() {
             <span id="results-heading" className="sr-only">The studio approach</span>
             <ResultsGallery />
             <div className="mt-8 text-center">
-              <Link to="/results" className="btn-ghost">Explore the studio approach</Link>
+              <Link to="/results" className="btn-ghost">See more of her work</Link>
             </div>
           </div>
+        </section>
+
+        <section className="section order-4 border-t border-cocoa/10" aria-labelledby="founder-heading">
+          <MeetPriscilla />
         </section>
 
         <section className="section order-4 bg-white" aria-labelledby="reviews-heading">
@@ -225,10 +275,10 @@ export default function Home() {
             <SectionHead
               eyebrow="Reviews"
               title="Trusted by clients across the North East"
-              intro="Read the studio&apos;s current public reviews while future on-site stories are confirmed with their authors."
+              intro="Real stories from clients of the MelanoTresses studio."
             />
             <span id="reviews-heading" className="sr-only">Client reviews</span>
-            <PendingReviewNotice />
+            <ClientStories />
           </div>
         </section>
 
